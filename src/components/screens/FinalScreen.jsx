@@ -10,8 +10,11 @@ import reset from '../../assets/reset.png'
 
 
 
-export const FinalScreen = ({ onStartTimerShow }) => {
+export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime }) => {
     const { finalTime, processingTime } = useTimer();
+
+    console.log(gameEndTime)
+    
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -41,9 +44,14 @@ export const FinalScreen = ({ onStartTimerShow }) => {
                     <h1 className='text-m'>RANK</h1>
                 </div>
                 <div className='rank-players mt-50'>
-                    <p className='text-m color-main font-bold'><span className='pr-70'>PLAYER 001</span>01:02:22</p>
+                    {topPlayers && topPlayers.map((player, index) => {
+                        return (
+                            <p key={player.id} className={`text-m ${index === 0 ? 'color-main font-bold pr-70' : ''}`}><span className={`${index === 0 ? 'pr-70' : 'pr-90'}`}>PLAYER {player.name}</span>{formatTime(player.score)}</p>
+                        ) 
+                    })}
+                    {/* <p className='text-m color-main font-bold'><span className='pr-70'>PLAYER 001</span>01:02:22</p>
                     <p className='text-m'><span className='pr-90'>PLAYER 002</span>01:02:22</p>
-                    <p className='text-m'><span className='pr-90'>PLAYER 003</span>01:02:22</p>
+                    <p className='text-m'><span className='pr-90'>PLAYER 003</span>01:02:22</p> */}
                 </div>
             </div>
             <div className='col-r'>
@@ -53,7 +61,7 @@ export const FinalScreen = ({ onStartTimerShow }) => {
                 <div className='table-result'>
                     <div className='table-top'>
                         <p className='font-bold color-main'>Your post-processing result</p>
-                        <p className='font-bold color-main'>{formatTime(processingTime)}</p>
+                        <p className='font-bold color-main'>{formatTime(gameEndTime)}</p>
                     </div>
                     <div className='table-bot'>
                         <p>Overall process time</p>
