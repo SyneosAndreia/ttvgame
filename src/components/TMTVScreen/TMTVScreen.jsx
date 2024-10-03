@@ -16,28 +16,33 @@ export const TMTVScreen = () => {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [loading, setLoading] = useState(false);
   const [instructionIndex, setInstructionIndex] = useState(0);
+  const [userNumber, setUserNumber] = useState('001');
 
 
-  // INSTRUCTIONS TIMER
+  const assignNumber = () => {
+    const lastNumber = localStorage.getItem('lastAssignNumber') || '001';
+    const nextNumber = String(parseInt(lastNumber, 10) + 1).padStart(3, '0');
+
+    if (nextNumber > '999') {
+      console.log('all numbers have been assign')
+      return;
+    }
+
+    localStorage.setItem('lastAssignNumber', nextNumber);
+    localStorage.setItem('userNumber', nextNumber);
+    setUserNumber(nextNumber)
+
+  }
+
   useEffect(() => {
-    // let timer;
-    // if (
-    //   currentScreen === "instructions" &&
-    //   instructionIndex < screenData.instructions.length - 1
-    // ) {
-    //   timer = setTimeout(() => {
-    //     setInstructionIndex((prev) => prev + 1);
-    //   }, 10000);
-    // } else if (
-    //   currentScreen === "instructions" &&
-    //   instructionIndex === screenData.instructions.length - 1
-    // ) {
-    //   timer = setTimeout(() => {
-    //     setCurrentScreen("loading");
-    //     setLoading(true);
-    //   }, 7000);
-    // }
+    const savedNumber = localStorage.getItem('userNumber');
+    if(savedNumber) {
+      setUserNumber(savedNumber)
+    }
+  }, [])
 
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       const code = e.code;
       if (code === "Enter" && currentScreen === "start") {
@@ -49,6 +54,7 @@ export const TMTVScreen = () => {
     };
 
     if (currentScreen === "start" || currentScreen === "startTimer") {
+
       window.addEventListener("keydown", handleKeyDown);
     }
 
@@ -78,12 +84,14 @@ export const TMTVScreen = () => {
   }
   const handleRestartScreen = () => {
     setCurrentScreen('start')
+    assignNumber()
+    console.log(userNumber)
   }
 
   return (
     <>
       <div className="screens">
-        {currentScreen === "start" && <StartScreen /> }
+        {currentScreen === "start" && <StartScreen userName={userNumber} /> }
         {currentScreen === "instructions" && <InstructionsScreens onInstructionsComplete={handleLoadingScreenShow} /> }
         {currentScreen === "loading" && <LoadingScreen loading={loading} onStartTimerShow={handleStartTimerShow} /> }
         {currentScreen === "startTimer" && <StartTimer />}

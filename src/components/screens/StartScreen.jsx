@@ -10,7 +10,7 @@ import screen2 from "../../assets/laptop2.png";
 
 gsap.registerPlugin(CSSPlugin);
 
-export const StartScreen = () => {
+export const StartScreen = ({userName}) => {
   const startMenu = screenData.start;
   const screen1Ref = useRef(null);
   const screen2Ref = useRef(null);
@@ -30,7 +30,7 @@ export const StartScreen = () => {
   //ANIMATE BUTTON
   useEffect(() => {
     setButtonText(
-      isAlternateText ? startMenu.buttonText[0] : startMenu.buttonText[1]
+      isAlternateText ? `You are player ${userName} of the day` : 'Press the button to start'
     );
   }, [isAlternateText]);
 
@@ -88,6 +88,7 @@ export const StartScreen = () => {
       </div>
       <div className="screen main-screen">
         <HTMLContent as="p" content={startMenu.description} className="mb-50" />
+        {/* <HTMLContent as="p" content={userName} className="mb-50" /> */}
         <HTMLContent
           as="h1"
           content={startMenu.title}

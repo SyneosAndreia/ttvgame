@@ -2,8 +2,7 @@
     "start": {
       "description": "<span class='font-bold'>GE Healthcare and MIM Software</span><br/>have come together to create new synergies",
       "title": "The<br/>TTV<sup>*</sup> Challenge",
-      "subtitle": "TEST YOUR TOTAL TUMOR VOLUME SPEED",
-      "buttonText": ["You're player 003 of the day", "Press the button to start"]
+      "subtitle": "TEST YOUR TOTAL TUMOR VOLUME SPEED"
     },
     "instructions": [
       {
