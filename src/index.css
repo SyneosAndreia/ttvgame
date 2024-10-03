@@ -1,13 +1,144 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  color: #6022a6;
+}
+
+h1 {
+  font-size: 84px;
+  font-family: "source-sans-pro", sans-serif;
+}
+h2 {
+  font-size: 43px;
+  line-height: 48px;
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 400;
+}
+h3 {
+  font-size: 40px;
+  line-height: 50px;
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 400;
+}
+p {
+  font-size: 40px;
+  line-height: 50px;
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 400;
+  color: #000000;
+}
+sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  line-height: 0;
+}
+
+img {
+  width: 100%;
+}
+
+/* FONT STYLES  */
+.text-xl {
+  font-size: 120px; 
+  line-height: 120px; 
+}
+.text-l {
+  font-size: 100px;
+  line-height: 100px; 
+}
+.text-110 {
+  font-size: 110px;
+}
+.text-m {
+  font-size: 50px;
+  line-height: 50px; 
+}
+.text-sm {
+  font-size: 30px;
+}
+.text-s {
+  font-size: 20px;
+  line-height: 20px; 
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-regular {
+  font-weight: 400;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.color-main {
+  color: #6022a6; 
+}
+
+/* image width  */
+.width-190 {
+  width: 190px;
+}
+.width-570 {
+  width: 570px;
+}
+
+/* margins  */
+.mb-120 {
+  margin-bottom: 120px;
+}
+.mb-95 {
+  margin-bottom: 95px;
+}
+.mb-70 {
+  margin-bottom: 70px;
+}
+.mb-50 {
+  margin-bottom: 50px;
+}
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+
+/* paddings  */
+.pr-90 {
+  padding-right: 90px;
+} 
+.pr-70 {
+  padding-right: 70px;
+} 
+
+/* height  */
+.h-544 {
+  height: 544px;
+}
+
+.bkg-white {
+  background-color: #ffffff;
+}
+

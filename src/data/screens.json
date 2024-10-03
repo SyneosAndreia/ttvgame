@@ -1,0 +1,42 @@
+{
+    "start": {
+      "description": "<span class='font-bold'>GE Healthcare and MIM Software</span><br/>have come together to create new synergies",
+      "title": "The<br/>TTV<sup>*</sup> Challenge",
+      "subtitle": "TEST YOUR TOTAL TUMOR VOLUME SPEED",
+      "buttonText": ["You're player 003 of the day", "Press the button to start"]
+    },
+    "instructions": [
+      {
+        "title": "HOW DOES IT WORK?",
+        "description": "The aim of the game is to complete post-processing as fast as possible on the MIM workstation"
+      },
+      {
+        "title": "1 › WAIT FOR THE SCAN",
+        "description": "The Omni Legend scan will begin automatically",
+        "icon": "clock.png",
+        "width": "190px",
+        "height": "190px"
+      },
+      {
+        "title": "2 › Prepare for the post-processing",
+        "description": "After the scan is complete, a countdown will begin allowing you to prepare to do the post-processing on the MIM workstation",
+        "icon": "loadingbar.png",
+        "width": "571px"
+      },
+      {
+        "title": ["3 › PRESS BUTTON TO START THE TIMER", "4 › PRESS BUTTON TO STOP THE TIMER"],
+        "description": [
+          "Start timer and proceed with post-processing on the MIM workstation",
+          "When post-processing is complete, press the button again to lock in your time"
+        ],
+        "icon": ["button.png", "button.png"]
+      },
+      {
+        "title": "5 › View your results",
+        "description": "See how fast the overall process is when using our MIM software",
+        "icon": "podium.png",
+        "width": "330px"
+      }
+    ],
+    "instructionDuration": 4000
+  }

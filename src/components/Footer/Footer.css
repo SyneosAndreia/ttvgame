@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 80px;
+  }
+
+  .footer p {
+    font-size: 16px;
+  }
+
+  .footer img {
+    width: 309px;
+    height: 69px;
+  }
