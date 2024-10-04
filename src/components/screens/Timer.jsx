@@ -43,6 +43,7 @@ const Timer = ({ onStartTimerShow }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Enter" && canStop && isRunning) {
+        console.log(overallTime)
         stopTimer(time, overallTime);
         changeScreen();
       }
@@ -53,14 +54,14 @@ const Timer = ({ onStartTimerShow }) => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [canStop, isRunning, time]);
 
-  const stopTimer = (finalTimeValue, finalOveralTime) => {
+  const stopTimer = (finalTimeValue, finalOverallTime) => {
     setIsRunning(false);
     setFinalTime(finalTimeValue);
-    setProcessingTime(finalOveralTime)
+    setProcessingTime(finalOverallTime);
   };
 
   const changeScreen = () => {
-    onStartTimerShow()
+    onStartTimerShow(overallTime)
   }
 
   return (

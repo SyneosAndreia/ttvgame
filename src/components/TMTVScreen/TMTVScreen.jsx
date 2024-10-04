@@ -18,7 +18,7 @@ export const TMTVScreen = () => {
   const [topPlayers, setTopPlayers] = useState([]);
 
   const [gameEndTime, setGameEndTime] = useState(null);
-  const { processingTime } = useTimer();
+  const { processingTime, setProcessingTime } = useTimer();
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -75,7 +75,6 @@ export const TMTVScreen = () => {
       user.id === currentUser.id ? { ...user, score: endTime } : user
     );
 
-    console.log(users)
 
     // If the current user is not in the list, add them
     if (!updatedUsers.some(user => user.id === currentUser.id)) {
@@ -131,12 +130,12 @@ export const TMTVScreen = () => {
     setCurrentScreen('loading');
   };
 
-  const handleLastScreenShow = () => {
-    const endTime = processingTime;
-    console.log(endTime)
+  const handleLastScreenShow = (endTime) => {
+    console.log("End time received:", endTime);
     setGameEndTime(endTime);
+    setProcessingTime(endTime);  // Update processingTime in context
     assignScoreAndCreateNextUser(endTime);
-    updateLeaderboard(endTime);
+    updateLeaderboard();
     setCurrentScreen('finalScreen');
   };
 
