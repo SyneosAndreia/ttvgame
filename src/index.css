@@ -63,12 +63,15 @@ img {
   font-size: 120px; 
   line-height: 120px; 
 }
+.text-110 {
+  font-size: 110px;
+}
 .text-l {
   font-size: 100px;
   line-height: 100px; 
 }
-.text-110 {
-  font-size: 110px;
+.text-80 {
+  font-size: 80px;
 }
 .text-m {
   font-size: 50px;
@@ -89,6 +92,9 @@ img {
 }
 .uppercase {
   text-transform: uppercase;
+}
+.underline {
+  text-decoration: underline;
 }
 
 .color-main {
@@ -123,6 +129,9 @@ img {
 .mt-50 {
   margin-top: 50px;
 }
+.mt-30 {
+  margin-top: 30px;
+}
 
 
 /* paddings  */
@@ -140,5 +149,8 @@ img {
 
 .bkg-white {
   background-color: #ffffff;
+}
+.bkg-black {
+  background-color: #000000;
 }
 

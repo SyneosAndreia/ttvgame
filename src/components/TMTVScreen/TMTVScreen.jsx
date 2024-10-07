@@ -8,11 +8,14 @@ import { StartTimer } from "../screens/StartTimer";
 import Timer from "../screens/Timer";
 import { FinalScreen } from "../screens/FinalScreen";
 import { useTimer } from "../../context/TimerContext";
+import AnimatedBanner from "../AnimatedBanner/AnimatedBanner";
 
 export const TMTVScreen = () => {
   const [currentScreen, setCurrentScreen] = useState("start");
   const [loading, setLoading] = useState(false);
   const [instructionIndex, setInstructionIndex] = useState(0);
+
+  const [finishedPlayerName, setFinishedPlayerName] = useState('');
 
   const [currentUser, setCurrentUser] = useState({ id: '001', name: '001', score: null });
   const [topPlayers, setTopPlayers] = useState([]);
@@ -43,16 +46,14 @@ export const TMTVScreen = () => {
 
   const updateLeaderboard = () => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    console.log(users)
     let sortedUsers = users
       .filter(user => user.score !== null)
       .sort((a, b) => a.score - b.score);
 
     if (sortedUsers.length === 0) {
-      console.log('sorted')
       // sortedUsers = [{ id: '001', name: '001', score: processingTime }];
       // setTopPlayers(sortedUsers);
-      console.log(users.find(user => user.id === '001'))
+      
 
     const user001 = users.find(user => user.id === '001');
     user001.score = processingTime;
@@ -131,9 +132,9 @@ export const TMTVScreen = () => {
   };
 
   const handleLastScreenShow = (endTime) => {
-    console.log("End time received:", endTime);
+    setFinishedPlayerName(currentUser.name); // Store the name of the player who just finished
     setGameEndTime(endTime);
-    setProcessingTime(endTime);  // Update processingTime in context
+    setProcessingTime(endTime);  
     assignScoreAndCreateNextUser(endTime);
     updateLeaderboard();
     setCurrentScreen('finalScreen');
@@ -144,19 +145,20 @@ export const TMTVScreen = () => {
   };
 
 
-  console.log(gameEndTime)
+  console.log('username start screen:' + topPlayers)
 
   return (
     <>
+    {currentScreen === "start" && topPlayers.length > 0 && <AnimatedBanner topPlayers={topPlayers} />}
       <div className="screens">
         {currentScreen === "start" && <StartScreen userName={currentUser.name} />}
         {currentScreen === "instructions" && <InstructionsScreens onInstructionsComplete={handleLoadingScreenShow} />}
         {currentScreen === "loading" && <LoadingScreen loading={loading} onStartTimerShow={handleStartTimerShow} />}
         {currentScreen === "startTimer" && <StartTimer />}
         {currentScreen === "timer" && <Timer onStartTimerShow={handleLastScreenShow} />}
-        {currentScreen === "finalScreen" && <FinalScreen onStartTimerShow={handleRestartScreen} topPlayers={topPlayers} gameEndTime={gameEndTime} />}
+        {currentScreen === "finalScreen" && <FinalScreen onStartTimerShow={handleRestartScreen} topPlayers={topPlayers} gameEndTime={gameEndTime} userName={finishedPlayerName} />}
       </div>
-      {currentScreen === "start" && <Footer />}
+      {(currentScreen === "start" || currentScreen === "finalScreen") && <Footer footnote={currentScreen === "finalScreen" ? false : true}  />}
     </>
   );
 };

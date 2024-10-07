@@ -1,5 +1,5 @@
 import React from 'react';
-import icon3 from "../../assets/button.png";
+import icon3 from "../../assets/btn.gif";
 
 export const StartTimer = () => {
     return (

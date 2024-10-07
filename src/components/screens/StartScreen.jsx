@@ -14,6 +14,10 @@ export const StartScreen = ({userName}) => {
   const startMenu = screenData.start;
   const screen1Ref = useRef(null);
   const screen2Ref = useRef(null);
+  const descriptionRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const buttonRef = useRef(null);
 
   // Change button Start =================================================
   const [buttonText, setButtonText] = useState("Press the button to start");
@@ -30,7 +34,7 @@ export const StartScreen = ({userName}) => {
   //ANIMATE BUTTON
   useEffect(() => {
     setButtonText(
-      isAlternateText ? `You are player ${userName} of the day` : 'Press the button to start'
+      isAlternateText ? 'Press the button to start' : `You are player ${userName} of the day`
     );
   }, [isAlternateText]);
 
@@ -67,6 +71,47 @@ export const StartScreen = ({userName}) => {
       };
     }
   }, []);
+  //Animate copy
+  useLayoutEffect(() => {
+    const elements = [
+      descriptionRef.current,
+      titleRef.current,
+      subtitleRef.current,
+      buttonRef.current
+    ];
+
+    if (elements.every(el => el)) {
+      const tl = gsap.timeline();
+
+      tl.fromTo(elements, 
+        {
+          opacity: 0,
+          y: -30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.2
+        }
+      );
+
+      // Add a subtle bounce to the button
+      tl.to(buttonRef.current, {
+        y: -5,
+        repeat: -.5,
+        yoyo: true,
+        duration: 0.5,
+        ease: "power1.inOut"
+      });
+
+      return () => {
+        tl.kill();
+      };
+    }
+  }, []);
+
 
   return (
     <>
@@ -87,15 +132,25 @@ export const StartScreen = ({userName}) => {
         />
       </div>
       <div className="screen main-screen">
-        <HTMLContent as="p" content={startMenu.description} className="mb-50" />
-        {/* <HTMLContent as="p" content={userName} className="mb-50" /> */}
+        <HTMLContent 
+          ref={descriptionRef}
+          as="p" 
+          content={startMenu.description} 
+          className="mb-50" 
+        />
         <HTMLContent
+          ref={titleRef}
           as="h1"
           content={startMenu.title}
           className="text-xl uppercase"
         />
-        <HTMLContent as="h3" content={startMenu.subtitle} className="mb-120" />
-        <div className="startBtn-comp">
+        <HTMLContent 
+          ref={subtitleRef}
+          as="h3" 
+          content={startMenu.subtitle} 
+          className="mb-120" 
+        />
+        <div className="startBtn-comp" ref={buttonRef}>
           <div className="startBtn-img" />
           <HTMLContent
             as="p"

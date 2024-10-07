@@ -1,7 +1,9 @@
 // Helper component to render HTML content
-export const HTMLContent = ({ content, as: Element = "div", ...props }) => (
-  <Element {...props} dangerouslySetInnerHTML={{ __html: content }} />
-);
+import React, { forwardRef } from 'react';
+
+export const HTMLContent = forwardRef(({ content, as: Element = "div", ...props }, ref) => (
+  <Element ref={ref} {...props} dangerouslySetInnerHTML={{ __html: content }} />
+));
 
 
 //HELPER TO format time as 00:00.00
