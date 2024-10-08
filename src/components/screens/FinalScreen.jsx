@@ -19,6 +19,7 @@ export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime, userNam
 
     const titleRef = useRef(null)
     const buttonRef = useRef(null)
+    const imgRef = useRef(null)
 
     const checkFirstPlayerName = (array, _name) => {
         const topPlayer = array[0]
@@ -44,10 +45,6 @@ export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime, userNam
 
   //Animate copy
   useLayoutEffect(() => {
-    const elements = [
-      titleRef.current,
-      buttonRef.current
-    ];
 
       const tl = gsap.timeline();
 
@@ -64,7 +61,6 @@ export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime, userNam
             stagger: 0.2
           }
         );
-
       }
 
       const tlbtn = gsap.timeline();
@@ -89,9 +85,11 @@ export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime, userNam
    return (
     <>
     <div className="screen final-screen">
-        {winner && 
+        {winner ? 
             <h2 ref={titleRef} className='text-l'><span className='font-regular text-80'>CONGRATS PLAYER {userName}!</span><br/>
          <span className='font-bold'>YOU HAVE THE HIGHEST SCORE</span></h2>
+         : 
+         <h2 className='font-regular text-80'>Try again to climb the leaderboard!</h2>
          }   
         <div className='col-wrap'>
             <div className='col-l '>
@@ -110,16 +108,16 @@ export const FinalScreen = ({ onStartTimerShow, topPlayers, gameEndTime, userNam
             <div className='vertical-line'></div>
             <div className='col-r'>
                 <div className='border-purple final-image'>
-                    <img src={finalImage} alt="" />
+                    <img ref={imgRef} src={finalImage} alt="final img" />
                 </div>
                 <div className='table-result'>
                     <div className='table-top'>
                         <p className='font-bold color-main'>Your post-processing result</p>
-                        <p className='font-bold color-main'>{formatTime(gameEndTime)}</p>
+                        <p className='font-bold color-main'>{formatTime(finalTime)}</p>
                     </div>
                     <div className='table-bot'>
                         <p>Overall process time</p>
-                        <p>{formatTime(finalTime)}</p>
+                        <p>{formatTime(gameEndTime)}</p>
                     </div>
                 </div>
                 <div ref={buttonRef} className='reset-btn mt-50'>

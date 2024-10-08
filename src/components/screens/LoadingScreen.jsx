@@ -52,7 +52,7 @@ export const LoadingScreen = ({ onStartTimerShow }) => {
             // Set timer to show StartTimer screen
             const timer = setTimeout(() => {
                 onStartTimerShow();
-            }, 5000); 
+            }, 10000); 
 
             return () => clearTimeout(timer);
         }

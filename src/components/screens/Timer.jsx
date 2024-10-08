@@ -43,7 +43,6 @@ const Timer = ({ onStartTimerShow }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Enter" && canStop && isRunning) {
-        console.log(overallTime)
         stopTimer(time, overallTime);
         changeScreen();
       }

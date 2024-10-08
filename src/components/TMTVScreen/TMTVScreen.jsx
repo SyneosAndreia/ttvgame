@@ -42,6 +42,8 @@ export const TMTVScreen = () => {
         setCurrentUser(newUser);
       }
     }
+
+    updateLeaderboard()
   }, []);
 
   const updateLeaderboard = () => {
@@ -84,6 +86,9 @@ export const TMTVScreen = () => {
 
     localStorage.setItem('users', JSON.stringify(updatedUsers));
 
+
+
+    updateLeaderboard()
     // Find the next user without a score or create a new one
     const nextUserWithoutScore = updatedUsers.find(user => user.score === null);
     if (nextUserWithoutScore) {
@@ -144,8 +149,6 @@ export const TMTVScreen = () => {
     setCurrentScreen('start');
   };
 
-
-  console.log('username start screen:' + topPlayers)
 
   return (
     <>

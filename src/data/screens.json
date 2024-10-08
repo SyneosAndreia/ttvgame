@@ -11,7 +11,7 @@
       },
       {
         "title": "1 › WAIT FOR THE SCAN",
-        "description": "The Omni Legend scan will begin automatically",
+        "description": "The Omni™ Legend scan will begin automatically",
         "icon": "clock.png",
         "width": "190px",
         "height": "190px"
@@ -32,7 +32,7 @@
       },
       {
         "title": "5 › View your results",
-        "description": "See how fast the overall process is when using our MIM software",
+        "description": "See how fast the overall process is when using our MIM Software",
         "icon": "podium.png",
         "width": "330px"
       }
