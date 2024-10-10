@@ -22,6 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
-
+# Exclude MP4 files
 *.mp4
+
+# Exclude build package (redundant but explicit)
+/build/
+
+# Exclude all PNG files
+*.png
