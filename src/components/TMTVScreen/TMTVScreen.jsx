@@ -42,7 +42,6 @@ export const TMTVScreen = () => {
         setCurrentUser(newUser);
       }
     }
-
     updateLeaderboard()
   }, []);
 
@@ -53,15 +52,9 @@ export const TMTVScreen = () => {
       .sort((a, b) => a.score - b.score);
 
     if (sortedUsers.length === 0) {
-      // sortedUsers = [{ id: '001', name: '001', score: processingTime }];
-      // setTopPlayers(sortedUsers);
-      
-
-    const user001 = users.find(user => user.id === '001');
-    user001.score = processingTime;
-    sortedUsers = [user001];
-
-    
+      const user001 = users.find(user => user.id === '001');
+      user001.score = processingTime;
+      sortedUsers = [user001];
     } else if (sortedUsers.length === 1) {
       setTopPlayers(sortedUsers);
     } else if (sortedUsers.length === 2) {

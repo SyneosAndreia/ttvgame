@@ -79,7 +79,7 @@ export const InstructionsScreens = ({
         } else {
           onInstructionsComplete();
         }
-      },duration);
+      },100);
 
     return () => clearTimeout(timer);
   }, [currentIndex, instruction.title, onInstructionsComplete]);

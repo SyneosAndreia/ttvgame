@@ -117,6 +117,17 @@
   position: relative;
   overflow: hidden;
 }
+.loading-time_text {
+  display: flex;
+  align-items: center;
+  padding-left: 25%;
+}
+.loading-time_text p {
+  color: #6022a6;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 0;
+}
 .col-30 {
   max-width: 455px;
   width: 100%;

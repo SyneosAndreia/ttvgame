@@ -29,12 +29,12 @@ const AnimatedBanner = ({ topPlayers }) => {
 
     const renderPlayerScores = () => (
         <>
-            <p className="ranking-title uppercase">Rankings</p>
-            {topPlayers && topPlayers.map((player, index) => (
-                <p key={player.id} className={`ranking-copy text-m uppercase ${index === 0 ? 'font-bold' : ''}`}>
-                    <span className="ranking-player">Player {player.name}</span><span className="ranking-score">{formatTime(player.score)}</span>
+            <p className="ranking-title uppercase">HIGH SCORE </p>
+            {topPlayers && (
+                <p key={topPlayers[0].id} className='ranking-copy text-m uppercase font-bold'>
+                    <span className="ranking-player">Player {topPlayers[0].name}</span><span className="ranking-score">{formatTime(topPlayers[0].score)}</span>
                 </p>
-            ))}
+            )}
         </>
     );
 
